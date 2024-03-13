@@ -1,0 +1,29 @@
+main: pw.stellaric.BetaReduxHelper.BetaReduxHelper
+name: BetaReduxHelper
+version: 1.0
+depend: [PermissionsEx]
+author: stellaricpw
+description: Custom functionality for the BetaRedux server
+commands:
+  recent:
+    description: View the most recently online players
+    usage: /<command>
+  updatesigns:
+    description: Update the signs in the world to up-to-date metrics values
+    usage: /<command>
+  nextannouncement:
+    description: Used by an admin to force the next announcement to show
+    usage: /<command>
+    aliases:
+      - nextannounce
+      - nextann
+  restartnow:
+    description: Used by an admin to trigger restart countdown
+    usage: /<command>
+permissions:
+  betaredux.plugins:
+    description: Allows the user to run /plugins (and /pl)
+  betaredux.version:
+    description: Allows the user to run /version (and /ver)
+  betaredux.signs.admin:
+    description: Allows the user to create admin-related signs
