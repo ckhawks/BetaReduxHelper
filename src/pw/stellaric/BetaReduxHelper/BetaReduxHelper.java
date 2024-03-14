@@ -8,10 +8,7 @@ import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.config.Configuration;
-import pw.stellaric.BetaReduxHelper.commands.NextAnnouncementCommand;
-import pw.stellaric.BetaReduxHelper.commands.RecentCommand;
-import pw.stellaric.BetaReduxHelper.commands.RestartNowCommand;
-import pw.stellaric.BetaReduxHelper.commands.UpdateSignsCommand;
+import pw.stellaric.BetaReduxHelper.commands.*;
 import pw.stellaric.BetaReduxHelper.util.DaylightCycleUtils;
 import pw.stellaric.BetaReduxHelper.util.RestartUtils;
 import pw.stellaric.BetaReduxHelper.util.SignUtils;
@@ -39,6 +36,7 @@ public class BetaReduxHelper extends JavaPlugin {
     UpdateSignsCommand updateSignsCommand;
     NextAnnouncementCommand nextAnnouncementCommand;
     RestartNowCommand restartNowCommand;
+    HacksCommand hacksCommand;
     Configuration config;
     boolean debugMode;
 
@@ -62,7 +60,7 @@ public class BetaReduxHelper extends JavaPlugin {
         this.config = this.getConfiguration();
         this.signUtils = new SignUtils(this);
         this.restartUtils = new RestartUtils(this);
-        this.daylightCycleUtils = new DaylightCycleUtils(this);
+//        this.daylightCycleUtils = new DaylightCycleUtils(this);
 
         // register commands
         recentCommand = new RecentCommand(this);
@@ -73,6 +71,8 @@ public class BetaReduxHelper extends JavaPlugin {
         this.getCommand("nextannouncement").setExecutor(nextAnnouncementCommand);
         restartNowCommand = new RestartNowCommand(this);
         this.getCommand("restartnow").setExecutor(restartNowCommand);
+        hacksCommand = new HacksCommand(this);
+        this.getCommand("hacks").setExecutor(hacksCommand);
 
         // register miscellaneous handler classes
         metricsHandler = new MetricsHandler(this);

@@ -139,7 +139,7 @@ public class PlayerListen extends PlayerListener implements Listener {
                 // funky hack to make it so people who aren't sleeping don't matter
                 if (!p.isSleeping()) {
                     p.setSleepingIgnored(true);
-                    this.brh.daylightCycleUtils.cancel = true;
+//                    this.brh.daylightCycleUtils.cancel = true;
                 }
             }
         }
@@ -191,19 +191,19 @@ public class PlayerListen extends PlayerListener implements Listener {
 
     @Override
     public void onPlayerChat(PlayerChatEvent event) {
-        if(event.getMessage().equalsIgnoreCase("dayinfo")) {
-            event.getPlayer().sendMessage("current time: " + event.getPlayer().getWorld().getTime() + ", times shifted: " + this.brh.daylightCycleUtils.timesShifted);
-        }
+//        if(event.getMessage().equalsIgnoreCase("dayinfo")) {
+//            event.getPlayer().sendMessage("current time: " + event.getPlayer().getWorld().getTime() + ", times shifted: " + this.brh.daylightCycleUtils.timesShifted);
+//        }
 
-        if(event.getMessage().equalsIgnoreCase("showtimenotices")) {
-            this.brh.daylightCycleUtils.showTimeNotices = true;
-            this.brh.getServer().broadcastMessage("time notices are enabled");
-        }
-
-        if(event.getMessage().equalsIgnoreCase("hidetimenotices")) {
-            this.brh.daylightCycleUtils.showTimeNotices = true;
-            this.brh.getServer().broadcastMessage("time notices are disabled");
-        }
+//        if(event.getMessage().equalsIgnoreCase("showtimenotices")) {
+//            this.brh.daylightCycleUtils.showTimeNotices = true;
+//            this.brh.getServer().broadcastMessage("time notices are enabled");
+//        }
+//
+//        if(event.getMessage().equalsIgnoreCase("hidetimenotices")) {
+//            this.brh.daylightCycleUtils.showTimeNotices = false;
+//            this.brh.getServer().broadcastMessage("time notices are disabled");
+//        }
 
         this.brh.metricsHandler.metricChatMessagesSent++;
 

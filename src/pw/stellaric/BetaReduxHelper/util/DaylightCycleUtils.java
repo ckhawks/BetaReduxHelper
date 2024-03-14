@@ -6,6 +6,20 @@ import pw.stellaric.BetaReduxHelper.BetaReduxHelper;
 import java.time.Instant;
 
 public class DaylightCycleUtils {
+
+    public final static long DAYTIME = 700; // 0
+    public final static long SUNSET = 11500;
+    public final static long NIGHTTIME = 13700;
+    public final static long SUNRISE = 21900;
+
+    private final static int DESIRED_NIGHTS = 2;
+    private int nightsCompleted = 0;
+    private int daytimesCompleted = 0;
+    private final static int DESIRED_DAYS = 2;
+
+    private final static long DURATION_DAY   = SUNSET  - DAYTIME; // 11500 - 700 = 10800
+    private final static long DURATION_NIGHT = SUNRISE - NIGHTTIME; // 21900 - 13700 =  8200
+
     BetaReduxHelper brh;
 
     public long timesShifted = 0; // debug
@@ -32,10 +46,63 @@ public class DaylightCycleUtils {
             public void run() {
                 shiftTime();
             }
-        }, 0, 1L); // (long) this.announcementIntervalMinutes * minute); // minute * 5
+        }, 0, 100L); // (long) this.announcementIntervalMinutes * minute); // minute * 5
     }
 
+    // if nightsCompleted == DESIRED_NIGHTS
+
+    public boolean isDay() {
+        World world = this.brh.getServer().getWorld("world");
+        long time = world.getTime();
+        if (time >= SUNRISE || time < SUNSET) {
+            return true;
+        }
+        return false;
+    }
+
+    // ran every 100 ticks (5 seconds)
     public void shiftTime() {
+        World world = this.brh.getServer().getWorld("world");
+        long currentWorldTime = world.getTime();
+
+        this.brh.getServer().broadcastMessage("time: " + currentWorldTime + ", nights done: " + nightsCompleted + ", days done: " + daytimesCompleted);
+
+        if (isDay()) {
+            // if it is day time
+            if (currentWorldTime > (SUNSET - 200)) {
+                this.brh.getServer().broadcastMessage("h1");
+                daytimesCompleted++;
+
+                if (daytimesCompleted >= DESIRED_DAYS) {
+                    // continue into sunset, don't change the time
+                    this.brh.log("The day is ending...", true);
+                    daytimesCompleted = 0;
+                } else {
+                    world.setTime(DAYTIME);
+                }
+            }
+
+
+        } else {
+            // if it is nighttime
+            if (currentWorldTime > (SUNRISE - 200)) {
+                this.brh.getServer().broadcastMessage("h2");
+                nightsCompleted++;
+
+                if (nightsCompleted >= DESIRED_NIGHTS) {
+                    // continue into sunrise, don't change the time
+                    this.brh.log("The night is ending...", true);
+                    nightsCompleted = 0;
+                } else {
+                    world.setTime(NIGHTTIME);
+                }
+            }
+
+
+        }
+    }
+
+    public void shiftTimeOld() {
         World world = this.brh.getServer().getWorld("world");
         long currentWorldTime = world.getTime();
 //        this.brh.getServer().broadcastMessage("" + currentWorldTime);
@@ -65,6 +132,7 @@ public class DaylightCycleUtils {
 
         if (subtractNextTick){
             world.setTime(currentWorldTime - 1);
+            world.setFullTime(world.getFullTime() + 1);
             subtractNextTick = false;
         } else {
             subtractNextTick = true;

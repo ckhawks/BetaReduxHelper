@@ -20,6 +20,9 @@ commands:
   restartnow:
     description: Used by an admin to trigger restart countdown
     usage: /<command>
+  hacks:
+    description: Enable or disable hacks.
+    usage: /<command>
 permissions:
   betaredux.plugins:
     description: Allows the user to run /plugins (and /pl)

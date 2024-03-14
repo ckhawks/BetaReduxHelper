@@ -34,21 +34,23 @@ public class EntityListen extends EntityListener implements Listener {
         LivingEntity dyingLivingEntity = (LivingEntity) entityDamageEvent.getEntity();
 
         // this is included to prevent doing damage to dead mobs and it counting twice
-        if(dyingLivingEntity.isDead()){
+
+//        this.brh.log("isDead? " + dyingLivingEntity.isDead());
+        if(!dyingLivingEntity.isDead()){
 //            this.brh.log("isDead");
             return;
         }
 
+        // if player health is still above 0 after damage is done
+//        this.brh.log("!deathhealth " + dyingLivingEntity.getHealth() + ", " + entityDamageEvent.getDamage());
         if(dyingLivingEntity.getHealth() - entityDamageEvent.getDamage() > 0){
-//            this.brh.log("!deathhealth");
+//            this.brh.log("return");
             return;
         }
 
         if(entityDamageEvent instanceof EntityDamageByEntityEvent){
             EntityDamageByEntityEvent event = (EntityDamageByEntityEvent) entityDamageEvent;
 //            this.brh.log("entity took damage");
-            Entity damagedEntity = event.getEntity();
-//            this.brh.log("damagedEntity" + damagedEntity.toString());
 
 //            this.brh.log("entityDamageEvent" + entityDamageEvent.toString());
             Entity killerEntity = event.getDamager();
@@ -90,7 +92,7 @@ public class EntityListen extends EntityListener implements Listener {
             // Player died to lava
             if(entityDamageEvent.getCause() == EntityDamageEvent.DamageCause.LAVA) {
                 this.brh.metricsHandler.metricPlayerDeathsLava++;
-//                this.brh.log("Player died to lava");
+                this.brh.log("Player died to lava");
                 return;
             }
 
