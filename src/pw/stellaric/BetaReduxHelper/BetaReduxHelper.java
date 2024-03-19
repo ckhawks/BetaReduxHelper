@@ -1,10 +1,7 @@
 package pw.stellaric.BetaReduxHelper;
 
-import com.avaje.ebean.Update;
-import lishid.openinv.commands.OpenInvPluginCommand;
 import org.bukkit.Bukkit;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.event.Event;
+import org.bukkit.World;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.config.Configuration;
@@ -15,7 +12,6 @@ import pw.stellaric.BetaReduxHelper.util.SignUtils;
 import ru.tehkode.permissions.PermissionManager;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
-import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -107,7 +103,13 @@ public class BetaReduxHelper extends JavaPlugin {
         int minute = (int) 1200L;
         getServer().getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
             public void run() {
-                getServer().dispatchCommand(new ConsoleCommandSender(getServer()), "save-all");
+//                getServer().dispatchCommand(new ConsoleCommandSender(getServer()), "save-all");
+
+                getServer().savePlayers();
+                for (World world : getServer().getWorlds()) {
+                    world.save();
+                }
+                log("Auto-save complete.");
             }
         }, minute * 10, minute * 10); // (long) this.announcementIntervalMinutes * minute); // minute * 5
 //
@@ -121,6 +123,7 @@ public class BetaReduxHelper extends JavaPlugin {
     public void onDisable() {
         signUtils.updateSavedSignsInConfig();
         metricsHandler.onDisable();
+        recentCommand.onDisable();
         log("Disabled.");
     }
 

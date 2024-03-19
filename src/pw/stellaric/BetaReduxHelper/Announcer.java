@@ -1,7 +1,6 @@
 package pw.stellaric.BetaReduxHelper;
 
 import org.bukkit.ChatColor;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.util.config.Configuration;
 
 import java.util.Random;

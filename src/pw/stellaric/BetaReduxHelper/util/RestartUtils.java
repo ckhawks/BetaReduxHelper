@@ -5,7 +5,6 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import pw.stellaric.BetaReduxHelper.BetaReduxHelper;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class RestartUtils {

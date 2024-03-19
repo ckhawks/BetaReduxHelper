@@ -1,9 +1,5 @@
 package pw.stellaric.BetaReduxHelper;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.Sign;
 import org.bukkit.event.Event;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -11,17 +7,8 @@ import org.bukkit.event.block.BlockListener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.plugin.PluginManager;
-import org.bukkit.util.config.Configuration;
 import pw.stellaric.BetaReduxHelper.util.SignUtils;
 
-import java.io.File;
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-
-import static java.lang.Integer.parseInt;
 import static org.bukkit.Bukkit.getServer;
 
 public class BlockListen extends BlockListener implements Listener {
