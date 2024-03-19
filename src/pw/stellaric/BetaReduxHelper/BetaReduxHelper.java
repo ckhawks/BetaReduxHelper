@@ -33,6 +33,7 @@ public class BetaReduxHelper extends JavaPlugin {
     NextAnnouncementCommand nextAnnouncementCommand;
     RestartNowCommand restartNowCommand;
     HacksCommand hacksCommand;
+    SacrificeCommand sacrificeCommand;
     Configuration config;
     boolean debugMode;
 
@@ -69,6 +70,8 @@ public class BetaReduxHelper extends JavaPlugin {
         this.getCommand("restartnow").setExecutor(restartNowCommand);
         hacksCommand = new HacksCommand(this);
         this.getCommand("hacks").setExecutor(hacksCommand);
+        sacrificeCommand = new SacrificeCommand(this);
+        this.getCommand("sacrifice").setExecutor(sacrificeCommand);
 
         // register miscellaneous handler classes
         metricsHandler = new MetricsHandler(this);
@@ -109,7 +112,7 @@ public class BetaReduxHelper extends JavaPlugin {
                 for (World world : getServer().getWorlds()) {
                     world.save();
                 }
-                log("Auto-save complete.");
+                log("Auto-saved.");
             }
         }, minute * 10, minute * 10); // (long) this.announcementIntervalMinutes * minute); // minute * 5
 //

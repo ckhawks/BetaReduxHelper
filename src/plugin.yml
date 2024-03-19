@@ -23,6 +23,9 @@ commands:
   hacks:
     description: Enable or disable hacks.
     usage: /<command>
+  sacrifice:
+    description: Sacrifice items to perform actions.
+    usage: /<command> <type>
 permissions:
   betaredux.plugins:
     description: Allows the user to run /plugins (and /pl)

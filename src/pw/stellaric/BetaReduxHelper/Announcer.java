@@ -22,6 +22,7 @@ public class Announcer {
         this.announcements = new String[]{
                 ChatColor.WHITE + "You can use " + ChatColor.YELLOW + "/list" + ChatColor.WHITE + " to view the list of online players.",
                 ChatColor.WHITE + "You can use " + ChatColor.YELLOW + "/recent" + ChatColor.WHITE + " to view the list of recently         departed players.",
+                ChatColor.WHITE + "You can use " + ChatColor.YELLOW + "/sacrifice" + ChatColor.WHITE + " to sacrifice items for      various actions.",
                 ChatColor.WHITE + "Only " + ChatColor.YELLOW + "60%" + ChatColor.WHITE + " of the players online need to sleep to pass   the night. Cool!",
                 ChatColor.WHITE + "Thanks for playing on " + ChatColor.RED + "BetaRedux" + ChatColor.WHITE + "!",
                 ChatColor.WHITE + "Take a cool " + ChatColor.RED + "screenshot" + ChatColor.WHITE + " of your build? Post it in our " + ChatColor.YELLOW + "   #betaredux-screenshots" + ChatColor.WHITE + " channel!",
@@ -36,6 +37,7 @@ public class Announcer {
                 ChatColor.WHITE + "Got " + ChatColor.GREEN + "feedback" + ChatColor.WHITE + "? Let us know.",
                 ChatColor.WHITE + "You can view server " + ChatColor.GREEN + "statistics" + ChatColor.WHITE + " at spawn. There have    been " + ChatColor.YELLOW + brh.metricsHandler.metricBlocksBroken + ChatColor.WHITE + " blocks broken so far!",
                 ChatColor.WHITE + "Go finish your " + ChatColor.YELLOW + "homework" + ChatColor.WHITE + ", " + ChatColor.YELLOW + "adult chores" + ", or " + ChatColor.YELLOW + "whatever" + ChatColor.WHITE + " you need to do.",
+
         };
         loadMessagesFromConfig();
         randomizeAnnouncementsArray();
