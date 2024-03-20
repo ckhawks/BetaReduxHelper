@@ -7,17 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/.." />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/.." recursive="false" />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="craftbukkit-1060-6f67ce03005ab3f51cb0f6401c5bd8a1996497f0" level="project" />
-    <orderEntry type="library" name="PExChat (2)" level="project" />
+    <orderEntry type="library" exported="" name="Java-WebSocket-1.5.6" level="project" />
+    <orderEntry type="library" exported="" name="json-20240303" level="project" />
+    <orderEntry type="library" name="PermissionsEx (1)" level="project" />
+    <orderEntry type="library" exported="" name="slf4j-api-2.0.9" level="project" />
   </component>
 </module>

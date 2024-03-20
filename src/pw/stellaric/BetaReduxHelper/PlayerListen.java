@@ -66,6 +66,7 @@ public class PlayerListen extends PlayerListener implements Listener {
         event.setJoinMessage(message);
         Logger.getLogger("Minecraft").log(Level.INFO, messageNoColors);
         brh.recentCommand.removeLoggedOffPlayerFromListIfNeeded(player);
+        this.brh.websocketHandler.sendWebsocketMessage("gameMessageToDiscord", ChatColor.stripColor(event.getJoinMessage()));
 
 //        if (bColors.getInstance().playerColor.containsKey(player.getName())) {
 //            ChatColor color = bColors.getInstance().playerColor.get(player.getName());
@@ -87,6 +88,7 @@ public class PlayerListen extends PlayerListener implements Listener {
         event.setQuitMessage(message);
         Logger.getLogger("Minecraft").log(Level.INFO, messageNoColors);
         brh.recentCommand.addLoggedOffPlayerToList(event.getPlayer());
+        this.brh.websocketHandler.sendWebsocketMessage("gameMessageToDiscord", ChatColor.stripColor(event.getQuitMessage()));
     }
 
     @Override
@@ -216,6 +218,8 @@ public class PlayerListen extends PlayerListener implements Listener {
                 event.setFormat(format);
 //                event.setMessage(parseChat(p, msg);
 //                this.brh.log("Format: " + format);
+
+                this.brh.websocketHandler.sendWebsocketMessage("gameMessageToDiscord", ChatColor.stripColor(event.getFormat()));
 
 
             } else {

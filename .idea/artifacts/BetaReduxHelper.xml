@@ -1,8 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="BetaReduxHelper">
+  <artifact type="jar" build-on-make="true" name="BetaReduxHelper">
     <output-path>$PROJECT_DIR$/../craftbukkit-1060-dev/plugins</output-path>
     <root id="archive" name="BetaReduxHelper.jar">
       <element id="module-output" name="BetaReduxHelper" />
+      <element id="library" level="project" name="json-20240303" />
+      <element id="library" level="project" name="Java-WebSocket-1.5.6" />
     </root>
   </artifact>
 </component>

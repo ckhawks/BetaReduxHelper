@@ -131,6 +131,7 @@ public class RestartUtils {
 
     public void restart1Second() {
         sendServerMessage("Server will restart in " + ChatColor.RED + "1 second" + ChatColor.WHITE + "!");
+        this.brh.websocketHandler.sendWebsocketMessage("gameMessageToDiscord", "Server is restarting...");
 
         this.brh.getServer().getScheduler().scheduleSyncDelayedTask(this.brh, new Runnable() {
             public void run() {

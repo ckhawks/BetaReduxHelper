@@ -9,6 +9,7 @@ import pw.stellaric.BetaReduxHelper.commands.*;
 import pw.stellaric.BetaReduxHelper.util.DaylightCycleUtils;
 import pw.stellaric.BetaReduxHelper.util.RestartUtils;
 import pw.stellaric.BetaReduxHelper.util.SignUtils;
+import pw.stellaric.BetaReduxHelper.util.WebsocketHandler;
 import ru.tehkode.permissions.PermissionManager;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
@@ -22,6 +23,7 @@ public class BetaReduxHelper extends JavaPlugin {
     public MetricsHandler metricsHandler = null;
     public SignUtils signUtils;
     public RestartUtils restartUtils;
+    public WebsocketHandler websocketHandler;
     public DaylightCycleUtils daylightCycleUtils;
 
     public Announcer announcer;
@@ -57,6 +59,7 @@ public class BetaReduxHelper extends JavaPlugin {
         this.config = this.getConfiguration();
         this.signUtils = new SignUtils(this);
         this.restartUtils = new RestartUtils(this);
+        this.websocketHandler = new WebsocketHandler(this);
 //        this.daylightCycleUtils = new DaylightCycleUtils(this);
 
         // register commands
@@ -127,6 +130,7 @@ public class BetaReduxHelper extends JavaPlugin {
         signUtils.updateSavedSignsInConfig();
         metricsHandler.onDisable();
         recentCommand.onDisable();
+        websocketHandler.onDisable();
         log("Disabled.");
     }
 

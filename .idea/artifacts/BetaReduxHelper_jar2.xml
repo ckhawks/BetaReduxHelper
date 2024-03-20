@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BetaReduxHelper:jar2">
+    <output-path>$PROJECT_DIR$/../craftbukkit-1060-dev/plugins</output-path>
+    <root id="archive" name="BetaReduxHelper.jar">
+      <element id="module-output" name="BetaReduxHelper" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../json-20240303.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../Java-WebSocket-1.5.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../slf4j-api-2.0.9.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
